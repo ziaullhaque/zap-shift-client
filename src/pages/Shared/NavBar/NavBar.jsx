@@ -2,8 +2,19 @@ import React from "react";
 import logo from "../../../assets/images/logo.png";
 import { MdArrowOutward } from "react-icons/md";
 import { Link, NavLink } from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const NavBar = () => {
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const links = (
     <>
       <li>
@@ -106,8 +117,18 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-3">
-          <a className="btn">Sign In</a>
-          <a className="btn bg-[#CAEB66]">Be a Rider</a>
+          {user ? (
+            <Link onClick={handleLogOut} className="btn">
+              Log Out
+            </Link>
+          ) : (
+            <Link to="/login" className="btn">
+              Sign In
+            </Link>
+          )}
+          <Link to="/be-a-rider" className="btn bg-[#CAEB66]">
+            Be a Rider
+          </Link>
           <a className="cursor-pointer bg-black w-8 h-8 rounded-full relative ">
             <MdArrowOutward className="text-[#CAEB66] absolute top-2 left-2" />
           </a>
