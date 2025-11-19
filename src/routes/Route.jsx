@@ -11,6 +11,13 @@ import ForgetPassword from "../pages/Auth/ForgetPassword/ForgetPassword";
 import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import PrivateRoute from "./PrivateRoute";
 import Rider from "../pages/Rider/Rider";
+import Pricing from "../pages/Pricing/Pricing";
+import Services from "../pages/Home/Services/Services";
+import SendParcel from "../pages/SendParcel/SendParcel";
+import TrackOrder from "../pages/TrackOrder/TrackOrder";
+import DashboardLayout from "../layouts/DashboardLayout";
+import MyParcels from "../pages/Dashboard/MyParcels/MyParcels";
+// import Services from "../pages/Services/Services";
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +39,42 @@ export const router = createBrowserRouter([
         Component: About,
       },
       {
+        path: "/services",
+        Component: Services,
+        // Component: Services,
+      },
+      {
         path: "/be-a-rider",
-        element: <PrivateRoute><Rider></Rider></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Rider></Rider>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/track-order",
+        element: (
+          <PrivateRoute>
+            <TrackOrder></TrackOrder>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/send-parcel",
+        element: (
+          <PrivateRoute>
+            <SendParcel></SendParcel>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("serviceCenters.json").then((res) => res.json()),
+      },
+      {
+        path: "/pricing",
+        element: (
+          <PrivateRoute>
+            <Pricing></Pricing>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -56,6 +97,20 @@ export const router = createBrowserRouter([
       {
         path: "/reset-password",
         element: <ResetPassword></ResetPassword>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "my-parcels",
+        Component: MyParcels,
       },
     ],
   },

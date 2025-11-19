@@ -48,6 +48,18 @@ const NavBar = () => {
               ? "bg-[#CAEB66] rounded-full font-semibold"
               : `font-semibold`
           }
+          to="/track-order"
+        >
+          Track Order
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#CAEB66] rounded-full font-semibold"
+              : `font-semibold`
+          }
           to="/about-us"
         >
           About Us
@@ -72,11 +84,39 @@ const NavBar = () => {
               ? "bg-[#CAEB66] rounded-full font-semibold"
               : `font-semibold`
           }
+          to="/send-parcel"
+        >
+          Send Parcel
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#CAEB66] rounded-full font-semibold"
+              : `font-semibold`
+          }
           to="/be-a-rider"
         >
           Be a Rider
         </NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#CAEB66] rounded-full font-semibold"
+                  : `font-semibold`
+              }
+              to="/dashboard/my-parcels"
+            >
+              My Parcels
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
