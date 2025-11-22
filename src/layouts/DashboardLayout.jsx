@@ -75,11 +75,67 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="MyParcels"
+                  data-tip="Dashboard Overview"
+                  to="/dashboard/dashboard-overview"
+                >
+                  <CiDeliveryTruck />
+                  <span className="is-drawer-close:hidden">
+                    {" "}
+                    Dashboard Overview
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="My Parcels"
                   to="/dashboard/my-parcels"
                 >
                   <CiDeliveryTruck />
                   <span className="is-drawer-close:hidden"> My Parcels</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Parcel Details"
+                  to="/dashboard/parcel-details"
+                >
+                  <CiDeliveryTruck />
+                  <span className="is-drawer-close:hidden">Parcel Details</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Manage Parcels"
+                  to="/dashboard/manage-parcels"
+                >
+                  <CiDeliveryTruck />
+                  <span className="is-drawer-close:hidden">Manage Parcels</span>
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Payment History"
+                  to="/dashboard/payment-history"
+                >
+                  <CiDeliveryTruck />
+                  <span className="is-drawer-close:hidden">
+                    Payment History
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="All Deliveries"
+                  to="/dashboard/all-deliveries"
+                >
+                  <CiDeliveryTruck />
+                  <span className="is-drawer-close:hidden">All Deliveries</span>
                 </NavLink>
               </li>
               {/* List item */}
@@ -239,4 +295,3 @@ export default DashboardLayout;
 // };
 
 // export default DashboardLayout;
-

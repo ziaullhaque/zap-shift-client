@@ -17,6 +17,14 @@ import SendParcel from "../pages/SendParcel/SendParcel";
 import TrackOrder from "../pages/TrackOrder/TrackOrder";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyParcels from "../pages/Dashboard/MyParcels/MyParcels";
+import ParcelDetails from "../pages/Dashboard/ParcelDetails/ParcelDetails";
+import ManageParcels from "../pages/Dashboard/ManageParcels/ManageParcels";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import AllDeliveries from "../pages/Dashboard/AllDeliveries/AllDeliveries";
+import DashboardOverview from "../pages/Dashboard/DashboardOverview/DashboardOverview";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
+import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 // import Services from "../pages/Services/Services";
 
 export const router = createBrowserRouter([
@@ -101,7 +109,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <DashboardLayout></DashboardLayout>
@@ -110,7 +118,39 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "my-parcels",
-        Component: MyParcels,
+        element : <MyParcels></MyParcels>,
+      },
+      {
+        path: "payment/:parcelId",
+        Component: Payment,
+      },
+      {
+        path: "payment-success",
+        Component: PaymentSuccess,
+      },
+      {
+        path: "payment-cancelled",
+        Component: PaymentCancelled,
+      },
+      {
+        path: "dashboard-overview",
+        Component: DashboardOverview,
+      },
+      {
+        path: "parcel-details",
+        Component: ParcelDetails,
+      },
+      {
+        path: "manage-parcels",
+        Component: ManageParcels,
+      },
+      {
+        path: "payment-history",
+        Component: PaymentHistory,
+      },
+      {
+        path: "all-deliveries",
+        Component: AllDeliveries,
       },
     ],
   },
