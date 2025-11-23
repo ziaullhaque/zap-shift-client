@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Registration = () => {
   const [show, setShow] = useState(false);
@@ -15,6 +16,7 @@ const Registration = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
+  const axiosSecure = useAxiosSecure();
   const { registerUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
   console.log("In the Registration Page Navigate ", navigate);
@@ -41,10 +43,25 @@ const Registration = () => {
           console.log("After Image Upload", res);
           console.log("After Image Upload", res.data);
           console.log("After Image Upload", res.data.data.url);
+          const photoURL = res.data.data.url;
+          //  create user in the database
+          const userInfo = {
+            email : data.email,
+            displayName : data.name,
+            photoURL: photoURL,
+
+          }
+          axiosSecure.post("/zap_users" ,userInfo)
+          .then(res =>{ 
+            if(res.data.insertedId){
+              console.log("User created in the database")
+            }
+          });
+
           // 3. update user profile to firebase
           const userProfile = {
             displayName: data.name,
-            photoURL: res.data.data.url,
+            photoURL: photoURL,
           };
           updateUserProfile(userProfile)
             .then((result) => {
@@ -53,7 +70,7 @@ const Registration = () => {
             })
             .catch((error) => {
               console.log(error);
-            });
+            }); 
         });
       })
       .catch((error) => {
@@ -74,11 +91,7 @@ const Registration = () => {
             </h2>
             <p className="text-gray-600 mb-6">Register With ZapShift</p>
             <div className="mb-4">
-              <img
-                src={profile}
-                alt="upload icon"
-                className="object-contain"
-              />
+              <img src={profile} alt="upload icon" className="object-contain" />
             </div>
             <form
               onSubmit={handleSubmit(handleRegistration)}

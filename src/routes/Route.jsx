@@ -25,6 +25,7 @@ import DashboardOverview from "../pages/Dashboard/DashboardOverview/DashboardOve
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
+import ApproveRiders from "../pages/Dashboard/ApproveRiders/ApproveRiders";
 // import Services from "../pages/Services/Services";
 
 export const router = createBrowserRouter([
@@ -58,6 +59,7 @@ export const router = createBrowserRouter([
             <Rider></Rider>
           </PrivateRoute>
         ),
+        loader: () => fetch("serviceCenters.json").then((res) => res.json()),
       },
       {
         path: "/track-order",
@@ -118,7 +120,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "my-parcels",
-        element : <MyParcels></MyParcels>,
+        element: <MyParcels></MyParcels>,
       },
       {
         path: "payment/:parcelId",
@@ -147,6 +149,10 @@ export const router = createBrowserRouter([
       {
         path: "payment-history",
         Component: PaymentHistory,
+      },
+      {
+        path: "approve-riders",
+        Component: ApproveRiders,
       },
       {
         path: "all-deliveries",
