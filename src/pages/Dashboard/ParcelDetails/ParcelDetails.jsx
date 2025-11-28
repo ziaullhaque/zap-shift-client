@@ -2,7 +2,7 @@ import React from "react";
 
 const ParcelDetails = () => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm">
+    <div className="bg-white p-6 rounded-xl shadow-sm mx-5 my-10">
       <h2 className="text-3xl font-bold text-[#053B2F] mb-6">Parcel Details</h2>
 
       <div className="grid md:grid-cols-2 gap-6">

@@ -56,8 +56,15 @@ const SendParcel = () => {
         cost = minCharge + extraCharge;
       }
     }
+
     console.log("Cost", cost);
     data.cost = cost;
+
+    //
+    // data.cost = cost;
+    // data.paymentStatus = "unpaid";
+    // data.deliveryStatus = "pending";
+
     Swal.fire({
       title: "Agree with the Cost?",
       text: `You will be Charged ${cost} Taka !`,
@@ -79,6 +86,7 @@ const SendParcel = () => {
               icon: "success",
               timer: 2500,
             });
+            // navigate("/dashboard/my-parcels");
           }
         });
       }
@@ -358,9 +366,9 @@ const SendParcel = () => {
           </div>
 
           {/* PICKUP TIME NOTE */}
-          <p className="text-xs text-gray-500 mt-8">
+          {/* <p className="text-xs text-gray-500 mt-8">
             * Pickup Time 4pm–7pm Approx.
-          </p>
+          </p> */}
 
           {/* SUBMIT BUTTON */}
           <div className="mt-4">

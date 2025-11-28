@@ -1,7 +1,7 @@
 import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { FaUserCheck } from "react-icons/fa";
+import { FaEye, FaUserCheck } from "react-icons/fa";
 import { IoPersonRemoveSharp } from "react-icons/io5";
 import { FaTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
@@ -23,7 +23,7 @@ const ApproveRiders = () => {
   });
 
   const updateRiderStatus = (rider, status) => {
-    const updateInfo = { status: status , email: rider.email };
+    const updateInfo = { status: status, email: rider.email };
     axiosSecure.patch(`/riders/${rider._id}`, updateInfo).then((res) => {
       if (res.data.modifiedCount) {
         refetch();
@@ -63,7 +63,7 @@ const ApproveRiders = () => {
   }
 
   return (
-    <div className="p-5">
+    <div className="bg-white p-6 rounded-xl shadow-sm mx-5 my-10">
       <h1 className="text-3xl font-bold mb-4">
         Rider Pending Approval : {riders.length}
       </h1>
@@ -79,7 +79,8 @@ const ApproveRiders = () => {
               <th>Bike Model</th>
               <th>Rider Email</th>
               <th>NID</th>
-              <th>Status</th>
+              <th>Application Status</th>
+              <th>Work Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -105,11 +106,15 @@ const ApproveRiders = () => {
                     {rider.status}
                   </p>
                 </td>
+                <td>{rider.workStatus}</td>
 
                 <td className="flex items-center ">
+                  <button className="btn btn-sm">
+                    <FaEye />
+                  </button>
                   <button
                     onClick={() => handleApproval(rider)}
-                    className="btn mx- btn-sm"
+                    className="btn ml-3 btn-sm"
                   >
                     <FaUserCheck />
                   </button>

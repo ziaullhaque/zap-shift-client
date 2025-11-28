@@ -65,8 +65,10 @@ const MyParcels = () => {
   };
 
   return (
-    <div>
-      <h2>All of my Parcels : {parcels.length}</h2>
+    <div className="bg-white p-6 rounded-xl shadow-sm mx-5 my-10">
+      <h2 className="text-3xl font-bold text-[#053B2F] mb-6">
+        All of my Parcels : {parcels.length}
+      </h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
@@ -76,7 +78,9 @@ const MyParcels = () => {
               <th>Name</th>
               <th>Cost</th>
               <th>Payment new</th>
-              <th>Payment old</th>
+              {/* <th>Payment old</th> */}
+              <th>Tracking Id</th>
+              <th>Transaction Id</th>
               <th>Delivery Status</th>
               <th>Actions</th>
             </tr>
@@ -101,7 +105,7 @@ const MyParcels = () => {
                   )}
                 </td>
                 {/* old */}
-                <td>
+                {/* <td>
                   {parcel.paymentStatus === "paid" ? (
                     <span className="text-green-400">Paid</span>
                   ) : (
@@ -111,7 +115,9 @@ const MyParcels = () => {
                       </button>
                     </Link>
                   )}
-                </td>
+                </td> */}
+                <td>{parcel.trackingId}</td>
+                <td>{parcel.transactionId}</td>
                 <td>{parcel.deliveryStatus}</td>
                 <td>
                   <button className="btn btn-square mx-3">
